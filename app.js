@@ -4,11 +4,12 @@ import bodyParser from "body-parser"
 import cors from "cors"
 import dotenv from 'dotenv';
 import UserRoute from "./UserRouting/UserRoute.js"
-import HomeRoute from "./UserRouting/HomeRoute.js";
 import CategoryRoutes from "./Private/Categories/Categories.js"
 import SubCategoryRoutes from "./Private/SubCategories/SubCategories.js"
 import PackageRoutes from "./Private/Package/Package.js"
 import BookingRoutes from "./Private/Booking/Booking.js";
+import PaymentRoute from "./Private/Payment/Transaction.js";
+import FeedbackRoute from "./Private/FeedBack/FeedBack.js";
 dotenv.config()
 
 const app = express()
@@ -38,8 +39,8 @@ app.use("/Categories", CategoryRoutes)
 app.use("/SubCategories", SubCategoryRoutes)
 app.use("/Package", PackageRoutes)
 app.use("/Booking", BookingRoutes)
-app.use("/Payment", PackageRoutes)
-
+app.use("/Payment", PaymentRoute)
+app.use("/FeedBack", FeedbackRoute)
 
 
 

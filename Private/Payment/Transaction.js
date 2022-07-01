@@ -1,22 +1,19 @@
 import express from "express"
 const PaymentRoute = express.Router()
-import Payment from "./../../models/PackageSchema"
+import Payment from "./../../models/PaymentSchema.js"
 PaymentRoute.post("/addPayMent", async (req, res, next) => {
     const PaymentObj = new Payment({
 
-        BookingNo: req.body.BookingNo,
+        CardName: req.body.CardName,
 
-        Package_Id: req.body.Package_Id,
+        FullName: req.body.FullName,
 
-        SubCategory_Id: req.body.SubCategory_Id,
+        CardNumber: req.body.CardNumber,
 
-        Booking_Status: req.body.Booking_Status,
+        Exp_Date: req.body.Exp_Date,
 
-        PackageName: req.body.PackageName,
+        CVV_Number: req.body.CVV_Number,
 
-        PackagePrice: req.body.PackagePrice,
-
-        UserName: req.bady.UserName,
     })
     await PaymentObj.save()
         .then(result => {

@@ -78,6 +78,7 @@ UserRoute.post("/login", async (req, res, next) => {
                     if (result == true) {
                         token = jsonwebtoken.sign(
                             {
+                                _id: user[0]._id,
                                 Email: user[0].Email,
                                 UserName: user[0].UserName,
                                 ContactNumber: user[0].ContactNumber,
@@ -89,6 +90,7 @@ UserRoute.post("/login", async (req, res, next) => {
                             }
                         );
                         res.status(200).json({
+                            _id: user[0]._id,
                             Email: user[0].Email,
                             UserName: user[0].UserName,
                             Password: req.body.Password,
