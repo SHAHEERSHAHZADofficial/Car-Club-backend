@@ -8,7 +8,7 @@ import HomeRoute from "./UserRouting/HomeRoute.js";
 import CategoryRoutes from "./Private/Categories/Categories.js"
 import SubCategoryRoutes from "./Private/SubCategories/SubCategories.js"
 import PackageRoutes from "./Private/Package/Package.js"
-import BookingRoutes from "./Private/Booking.js";
+import BookingRoutes from "./Private/Booking/Booking.js";
 dotenv.config()
 
 const app = express()
@@ -33,12 +33,12 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(bodyParser.json())
 
-app.use("/", HomeRoute)
 app.use("/User", UserRoute)
 app.use("/Categories", CategoryRoutes)
 app.use("/SubCategories", SubCategoryRoutes)
 app.use("/Package", PackageRoutes)
 app.use("/Booking", BookingRoutes)
+app.use("/Payment", PackageRoutes)
 
 
 

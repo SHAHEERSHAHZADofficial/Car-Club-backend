@@ -1,6 +1,6 @@
 import express from "express"
 const BookingRoutes = express.Router()
-import Booking from "../models/BookingSchema.js"
+import Booking from "../../models/BookingSchema.js"
 
 
 BookingRoutes.post("/addBooking", async (req, res, next) => {
@@ -63,6 +63,44 @@ BookingRoutes.get("/getBooking/:BookingNo", async (req, res, next) => {
 
 
 
+
+BookingRoutes.delete("/delete", async (req, res) => {
+
+    let id = req.body.id
+    Booking.findByIdAndDelete({ _id: id })
+        .then((result) => {
+            res.status(200).json({
+                Booking: result
+            })
+        }).catch((err) => {
+            console.error(err)
+            res.status(500).json({
+                msg: err
+            })
+        });
+
+
+})
+
+
+BookingRoutes.post("/update", async (req, res) => {
+
+    let id = req.body.id
+    let Booking_Status = req.body.Booking_Status
+    Booking.findByIdAndUpdate({ _id: id }, { Booking_Status: Booking_Status })
+        .then((result) => {
+            res.status(200).json({
+                Booking: result
+            })
+        }).catch((err) => {
+            console.error(err)
+            res.status(500).json({
+                msg: err
+            })
+        });
+
+
+})
 
 
 
